@@ -16,15 +16,16 @@ for (var i = player_1; player_1 < boardSize; i++) {
     else {
         player_1 = player_1 + diceValue;
     }
-    for (var i = 0; i < ladder.length; i++) {
-        if (player_1 == ladder[i]) {
+    for (var j = 0; j < ladder.length; j++) {
+        if (player_1 == ladder[j]) {
             player_1 = player_1 + 7;
         }
     }
-    for (var i = 0; i < snake.length; i++) {
-        if (player_1 == snake[i]) {
+    for (var k = 0; k < snake.length; k++) {
+        if (player_1 == snake[k]) {
             player_1 = player_1 - 10;
         }
     }
     console.log(diceValue, player_1);
+    console.log(i);
 }
