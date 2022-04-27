@@ -1,4 +1,5 @@
 var player_1 = 0;
+var player_2 = 0;
 var diceValue;
 var ladder = [17, 29, 34, 60, 82];
 var snake = [20, 32, 55, 63, 92];
