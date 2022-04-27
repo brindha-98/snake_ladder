@@ -1,32 +1,59 @@
-var player_1 = 0;
-var player_2 = 0;
+var players = [0, 0];
+var playerPosition = 0;
 var diceValue;
 var ladder = [17, 29, 34, 60, 82];
 var snake = [20, 32, 55, 63, 92];
 var checkPosition;
 var boardSize = 100;
-for (var i = player_1; player_1 < boardSize; i++) {
+var playAgain = false;
+for (var i = players[playerPosition]; players[playerPosition] < boardSize; i++) {
+    console.log(playerPosition);
     diceValue = Math.floor((Math.random() * 6) + 1);
-    if (player_1 >= 94) {
-        checkPosition = boardSize - player_1;
-        console.log(diceValue, player_1, checkPosition);
+    if (players[playerPosition] >= 94) {
+        checkPosition = boardSize - players[playerPosition];
+        console.log(diceValue, players[playerPosition], checkPosition);
         if (diceValue <= checkPosition) {
-            player_1 = player_1 + diceValue;
+            players[playerPosition] = players[playerPosition] + diceValue;
         }
     }
     else {
-        player_1 = player_1 + diceValue;
+        players[playerPosition] = players[playerPosition] + diceValue;
     }
     for (var j = 0; j < ladder.length; j++) {
-        if (player_1 == ladder[j]) {
-            player_1 = player_1 + 7;
+        if (players[playerPosition] == ladder[j]) {
+            players[playerPosition] = players[playerPosition] + 7;
+            playAgain = true;
         }
     }
     for (var k = 0; k < snake.length; k++) {
-        if (player_1 == snake[k]) {
-            player_1 = player_1 - 10;
+        if (players[playerPosition] == snake[k]) {
+            players[playerPosition] = players[playerPosition] - 10;
         }
     }
-    console.log(diceValue, player_1);
+    if (playAgain == false) {
+        console.log('player 1', players[playerPosition], playerPosition);
+        if (playerPosition == 0) {
+            if (players[playerPosition] == 100) {
+                break;
+            }
+            playerPosition = 1;
+        }
+        else {
+            console.log('player 2', players[playerPosition], playerPosition);
+            if (players[playerPosition] == 100) {
+                break;
+            }
+            playerPosition = 0;
+        }
+    }
+    playAgain = false;
+
     console.log(i);
+}
+console.log(players[0], players[1]);
+if (players[0] == 100) {
+    console.log("player 1 is win");
+}
+else {
+    console.log("player 2 is win");
 }
